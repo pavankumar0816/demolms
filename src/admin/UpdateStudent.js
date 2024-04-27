@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../config'
+
 export default function UpdateStudent() 
 {
    const [studentData, setStudentData] = useState({
@@ -44,10 +46,10 @@ export default function UpdateStudent()
           if (Object.keys(updatedData).length !== 0) {
             // There are changes
             updatedData.studentid = studentData.studentid;
-            const response = await axios.put('http://localhost:2024/updatestudent', updatedData);
+            const response = await axios.put(`${config.url}/updatestudent`, updatedData);
             setMessage(response.data);
             setError('');
-            const res = await axios.get('http://localhost:2024/addstudent/${studentData.studentid}, updatedData');
+            const res =  await axios.get(`${config.url}/addstudent/${studentData.studentid}, updatedData`);
             localStorage.setItem("student",JSON.stringify(res.data))
           } else {
             // No changes

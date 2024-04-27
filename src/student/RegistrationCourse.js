@@ -9,7 +9,7 @@ export default function RegistrationCourse() {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.post(`${config.url}/viewcourses`);
+      const response = await axios.get(`${config.url}/viewcourses`);
       setCourses(response.data);
     } catch (e) {
       console.error(e.message);

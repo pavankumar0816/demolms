@@ -8,7 +8,7 @@ export default function ViewMappedCourses() {
 
     useEffect(() => {
         // Fetch mapped courses
-         axios.post(`${config.url}/viewmappedcourses`)
+         axios.get(`${config.url}/viewmappedcourses`)
             .then(response => {
                 setMappedCourses(response.data);
             })

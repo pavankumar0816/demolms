@@ -1,7 +1,7 @@
 /* home.css */
 
 .header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("D:\MSWD\SDPPROJECT\frontendapp\demolms\src\main\images\background.png");
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("D:\MSWD\SDPPROJECT\frontendapp\demolms\src\main\images\background.png"); */
   height: 100vh;
   margin-top: -1px;
   font-size: 50px;

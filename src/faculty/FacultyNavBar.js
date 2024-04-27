@@ -6,7 +6,7 @@ import FacultyHome from './FacultyHome';
 import CourseContent from './CourseContent'
 import ConductAssessment from './ConductAssessment';
 
-// import ViewMappedCourses from './ViewMappedCourses';
+ import ViewMappedCourses from './ViewMappedCourses';
 
 import ViewStudentAssessment from './ViewStudentAssessment';
 import FacultyProfile from './FacultyProfile';
@@ -38,14 +38,14 @@ export default function FacultyNavBar()
               <Link to="/viewstudentassessment">View Student Assessment</Link>
             </div>
           </li>
-          {/* <li><Link to="/viewmappedcourses">View Mapped Courses</Link></li> */}
+          <li><Link to="/viewmappedcourses">View Mapped Courses</Link></li>
           <li><button className="logoutButton" onClick={handleLogout}>Logout</button></li>
          
       </ul>
     </nav>
     <Routes>
       <Route path="/facultyhome" element={<FacultyHome/>} exact />
-      
+      <Route path="/facultyprofile" element={<FacultyProfile/>} exact />
 
       {/* <Route path="/mycourses" element={<ViewCourses/>} exact /> */}
 
@@ -54,7 +54,7 @@ export default function FacultyNavBar()
       <Route path="/uploadassessment" element={<ConductAssessment/>} exact/>
       <Route path="/viewstudentassessment" element={<ViewStudentAssessment/>} exact />
       
-      {/* <Route path="/viewmappedcourses" element={<ViewMappedCourses/>} exact /> */}
+      <Route path="/viewmappedcourses" element={<ViewMappedCourses/>} exact />
             
       
 

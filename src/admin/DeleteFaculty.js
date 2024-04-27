@@ -27,7 +27,7 @@ export default function DeleteFaculty()
     const deleteFaculty = async(facultyid) =>{
         try
         {
-           await axios.delete(`http://localhost:2024/deletefaculty/${facultyid}`);
+          await axios.delete(`${config.url}/deletefaculty/${facultyid}`);
            fetchFaculties();
         }
         catch(e)

@@ -1,8 +1,8 @@
 // Home.js
 import React from 'react';
-import mobapp from './images/lmsmob.png';
-import lmscourse from './images/lmscourse.png';
-import lmssubj from './images/lmssubj.png';
+// import mobapp from './images/lmsmob.png';
+// import lmscourse from './images/lmscourse.png';
+// import lmssubj from './images/lmssubj.png';
 
 import './home.css';
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
         {/* <p>Ready to start? Login In</p> */}
       </div>
 
-      <div className="sources">
+      {/* <div className="sources">
         <div className="row">                 
           <div className="text-col">
             <h3>Enjoy by accessing all the Content</h3>
@@ -34,9 +34,9 @@ export default function Home() {
                <img src={mobapp} alt="app"/>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="sources1"> 
+      {/* <div className="sources1"> 
         <div className="row1">  
           <div className="img1-col">
                <img src={lmscourse} alt="app"/>
@@ -46,9 +46,9 @@ export default function Home() {
             <p>PMPK</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className='sources2'> 
+      {/* <div className='sources2'> 
         <div className="row2">                 
           <div className="text2-col">
             <h3>PSPK</h3>
@@ -58,7 +58,7 @@ export default function Home() {
                <img src={lmssubj} alt="app"/>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

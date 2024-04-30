@@ -1,13 +1,27 @@
-// Home.js
 import React from 'react';
+
 import mobapp from './images/lmsmob.png';
 import lmscourse from './images/lmscourse.png';
 import lmssubj from './images/lmssubj.png';
+import backgroundpng from './images/background.png'; // Importing the background image
 
 import './home.css';
+
 export default function Home() {
+  const headerStyle = {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundpng})`,
+    height: '100vh',
+    marginTop: '-1px',
+    fontSize: '50px',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    padding: '10px 8%',
+    position: 'relative',
+    resize: 'none',
+  };
+
   return (
-    <div className='header'>
+    <div style={headerStyle}>
 
         {/* <div className="explore-button">
             <button id="signInButton">Sign-in</button>
@@ -24,7 +38,7 @@ export default function Home() {
         {/* <p>Ready to start? Login In</p> */}
       </div>
 
-      <div className="sources">
+      {/* <div className="sources">
         <div className="row">                 
           <div className="text-col">
             <h3>Enjoy by accessing all the Content</h3>
@@ -58,7 +72,7 @@ export default function Home() {
                <img src={lmssubj} alt="app"/>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

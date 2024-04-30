@@ -15,7 +15,7 @@ export default function StudentHome(){
     <div>
       {studentData && (
         <div>
-          <h4>Welcome {studentData.fullname}</h4>
+          <h4>Welcome {studentData.studentname}</h4>
         </div>
       )}
     </div>

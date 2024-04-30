@@ -15,7 +15,7 @@ export default function FacultyHome(){
     <div>
       {facultydata && (
         <div>
-          <h4>Welcome {facultydata.fullname}</h4>
+          <h4>Welcome {facultydata.facultyname}</h4>
         </div>
       )}
     </div>

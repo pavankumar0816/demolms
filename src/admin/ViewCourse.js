@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-// import config from '../config'
+import config from '../config'
 
 export default function ViewCourse() 
 
@@ -10,7 +10,7 @@ export default function ViewCourse()
     const fetchCourses = async () =>{
         try
         {
-             const response = await axios.get('http://localhost:2024/viewcourses');
+             const response = await axios.get(`${config.url}/viewcourses`);
              setCourses(response.data)
 
         }

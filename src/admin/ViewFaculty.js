@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
+import config from '../config'
 
 export default function ViewFaculty() 
 {
@@ -8,7 +9,7 @@ export default function ViewFaculty()
     const fetchFaculties = async () =>{
         try
         {
-             const response = await axios.get('http://localhost:2024/viewfaculty');
+             const response = await axios.get(`${config.url}/viewfaculty`);
              setFaculty(response.data)
 
         }

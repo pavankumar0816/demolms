@@ -1,10 +1,9 @@
 import React from 'react';
- import './contact.css'
 
 const ContactUs = () => {
     return (
         <div className="contact">
-         <h2 style={{ color: 'red', textAlign: 'center', marginBottom: '20px' }}>Contact Us</h2>
+         <h2 style={{ color: 'brown', textAlign: 'center', marginBottom: '20px' }}>Contact Us</h2>
             <div className="form">
                 <form>
                     <div className="form-group">

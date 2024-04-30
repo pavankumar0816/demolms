@@ -19,13 +19,15 @@ import UpdateStudent from './UpdateStudent';
 import AddCourse from './AddCourse';
 import ViewCourse from './ViewCourse';
 import DeleteCourse from './DeleteCourse';
+import UpdateCourse from './UpdateCourse';
 
 import AddFaculty from './AddFaculty';
 import ViewFaculty from './ViewFaculty';
 import DeleteFaculty from './DeleteFaculty'
+import UpdateFaculty from './UpdateFaculty'
 
 import FacultyWithCourse from './FacultyWithCourse'
-import StudentWithCourse from './StudentWithCourse';
+ 
 
 
 // import AdminLogin from './AdminLogin'
@@ -50,7 +52,7 @@ export default function AdminNavBar()
     <nav>
      <ul>
      <li><Link to="/adminhome">Home</Link></li>
-     <li><Link to="/adminpwd">Change Password</Link></li>
+     <li><Link to="/changeadminpwd">Change Password</Link></li>
      {/* <li><Link to="/sidebar">Sidebar</Link></li> */}
 
      <li className="dropdown">
@@ -84,7 +86,7 @@ export default function AdminNavBar()
             <Link>Mapping</Link>
             <div className="dropdown-content">
               <Link to="/facultycoursemapping">Faculty Course Mapping</Link>
-              <Link to="/studentcoursemapping">Student Course Mapping</Link>
+             
             </div>
           </li> 
           <li><button className="logoutButton" onClick={handleLogout}>Logout</button></li>
@@ -93,7 +95,7 @@ export default function AdminNavBar()
      <Routes>
       {/* <Route path="/sidebar" element={<SideBar/>}  /> */}
     <Route path="/adminhome" element={<AdminHome/>} exact/>
-    <Route path="/adminpwd" element={<ChangeAdminPwd/>} exact/>
+    <Route path="/changeadminpwd" element={<ChangeAdminPwd/>} exact/>
 
     <Route path="/addstudent" element={<AddStudent/>} />
     <Route path="/viewstudent" element={<ViewStudent/>} />
@@ -103,13 +105,15 @@ export default function AdminNavBar()
       <Route path="/addCourse" element={<AddCourse/>} exact/>
       <Route path="/viewcourse" element={<ViewCourse/>} exact/>
       <Route path="/deletecourse" element={<DeleteCourse/>} exact/>
+      <Route path="/updatecourse" element={<UpdateCourse/>} exact/>
 
       <Route path="/addfaculty" element={<AddFaculty/>} exact />
       <Route path="/viewfaculty" element={<ViewFaculty/>} exact/>
       <Route path="/deletefaculty" element={<DeleteFaculty/>}  />
+      <Route path="/updatefaculty" element={<UpdateFaculty/>} exact/>
 
       <Route path="/facultycoursemapping" element={<FacultyWithCourse/>} />
-      <Route path="/studentcoursemapping" element={<StudentWithCourse/>} />
+       
 
     </Routes>
 

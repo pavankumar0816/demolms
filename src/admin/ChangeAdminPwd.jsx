@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
 import config from '../config'
+
 export default function ChangeAdminPwd() {
 
 
@@ -34,7 +34,7 @@ export default function ChangeAdminPwd() {
     e.preventDefault();
     try 
     {
-      const response = await axios.post(`${config.url}/changeadminpwd`, {...formData,"username":adminData.username});
+      const response =  await axios.put(`${config.url}/changeadminpwd`, {...formData,"username":adminData.username});
       if (response.data != null) 
       {
         localStorage.removeItem('isAdminLoggedIn');

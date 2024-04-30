@@ -13,12 +13,12 @@ body {
   form {
     display: flex;
     flex-direction: column;
-    background-color: #0da9d4;
+    /* background-color: #0da9d4; */
     width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #090909;
-    border-radius: 5px;
+    /* border-radius: 5px; */
   }
 
   

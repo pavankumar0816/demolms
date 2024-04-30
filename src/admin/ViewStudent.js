@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import './view.css'
+import config from '../config'
 
 export default function ViewStudent()
 {
@@ -9,7 +10,7 @@ export default function ViewStudent()
    const fetchstudents = async () =>{
     try
     {
-        const response = await axios.get('http://localhost:2024/viewstudent')
+        const response = await axios.get(`${config.url}/viewstudent`)
         setStudent(response.data)
     }
     catch(e)

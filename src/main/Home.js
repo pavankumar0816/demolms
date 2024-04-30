@@ -3,14 +3,14 @@ import React from 'react';
 // import mobapp from './images/lmsmob.png';
 // import lmscourse from './images/lmscourse.png';
 // import lmssubj from './images/lmssubj.png';
-import backgroundpng from './images/background.png'; // Importing the background image
+// import backgroundpng from './images/background.png'; // Importing the background image
 import './home.css';
 
 export default function Home() {
 
   return (
     <div className="header">
-      <img src={backgroundpng} alt="app" className="background-image" />
+      {/* <img src={backgroundpng} alt="app" className="background-image" /> */}
       
      
      

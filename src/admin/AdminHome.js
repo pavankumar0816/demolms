@@ -8,8 +8,6 @@ export default function AdminHome() {
     courseCount: 0,
     facultyCount: 0
   });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchCounts();
@@ -19,10 +17,8 @@ export default function AdminHome() {
     try {
       const response = await axios.get(`${config.url}/count`);
       setCounts(response.data);
-      setLoading(false);
     } catch (error) {
-      setError('Failed to fetch counts');
-      setLoading(false);
+      console.error('Failed to fetch counts:', error);
     }
   };
 

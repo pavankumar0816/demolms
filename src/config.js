@@ -1,6 +1,6 @@
 const config = 
 {
-    url: 'http://localhost:2024'
+    url: 'https://backendapp-px5z.onrender.com'
 };
 
 export default config;

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import config from '../config';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
 
 export default function AdminHome() {
   const [counts, setCounts] = useState({
     studentCount: 0,
     courseCount: 0,
-    facultyCount: 0
+    facultyCount: 0,
   });
 
   useEffect(() => {
@@ -18,13 +18,22 @@ export default function AdminHome() {
       const response = await axios.get(`${config.url}/count`);
       setCounts(response.data);
     } catch (error) {
-      console.error('Failed to fetch counts:', error);
+      console.error("Failed to fetch counts:", error);
     }
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '1200px', width: '100%' }}>
+    <div
+      style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          maxWidth: "1200px",
+          width: "100%",
+        }}
+      >
         <div style={cardStyle}>
           <div style={cardHeaderStyle}>
             <h3>Students</h3>
@@ -55,20 +64,20 @@ export default function AdminHome() {
 }
 
 const cardStyle = {
-  width: '30%',
-  background: '#f4f4f4',
-  border: '1px solid #ddd',
-  borderRadius: '5px',
-  padding: '20px',
-  margin: '0 10px', // Added margin to separate the cards
+  width: "30%",
+  background: "#f4f4f4",
+  border: "1px solid #ddd",
+  borderRadius: "5px",
+  padding: "20px",
+  margin: "0 10px", // Added margin to separate the cards
 };
 
 const cardHeaderStyle = {
-  borderBottom: '1px solid #ddd',
-  marginBottom: '10px',
-  paddingBottom: '10px',
+  borderBottom: "1px solid #ddd",
+  marginBottom: "10px",
+  paddingBottom: "10px",
 };
 
 const cardContentStyle = {
-  marginTop: '10px',
+  marginTop: "10px",
 };

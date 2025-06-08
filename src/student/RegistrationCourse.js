@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import config from '../config'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
 
 export default function RegistrationCourse() {
   const [courses, setCourses] = useState([]);
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const fetchCourses = async () => {
     try {
@@ -22,22 +22,25 @@ export default function RegistrationCourse() {
 
   const registerCourse = async (coursecode) => {
     try {
-      await axios.post(`${config.url}/registercourses/${ coursecode }`);
-      setMessage('Course Registered Successfully');
+      await axios.post(`${config.url}/registercourses/${coursecode}`);
+      setMessage("Course Registered Successfully");
       fetchCourses(); // Refresh the courses list after registration
     } catch (e) {
       setError(e.message);
     }
   };
-  
 
   return (
-    <div className='table-container'>
+    <div className="table-container">
       <h3 align="center">Registered Courses</h3>
-      {
-        message ? <h4 align="center">{message}</h4> : <h4 align="center" style={{ color: "red" }}>{error}</h4>
-      }
-      <table className="job-table mx-auto" align='center'>
+      {message ? (
+        <h4 align="center">{message}</h4>
+      ) : (
+        <h4 align="center" style={{ color: "red" }}>
+          {error}
+        </h4>
+      )}
+      <table className="job-table mx-auto" align="center">
         <thead>
           <tr>
             <th>Department</th>
@@ -62,7 +65,12 @@ export default function RegistrationCourse() {
                 <td>{course.coursecode}</td>
                 <td>{course.coursename}</td>
                 <td>
-                <button onClick={() => registerCourse(course.coursecode)} className='button-62' >REGISTER</button>
+                  <button
+                    onClick={() => registerCourse(course.coursecode)}
+                    className="button-62"
+                  >
+                    REGISTER
+                  </button>
                 </td>
               </tr>
             ))
@@ -74,5 +82,5 @@ export default function RegistrationCourse() {
         </tbody>
       </table>
     </div>
-  )
+  );
 }

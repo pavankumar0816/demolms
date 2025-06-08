@@ -1,56 +1,99 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from '@mui/material'; // Import Material-UI components
-import config from '../config';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
+import {
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+  Button,
+} from "@mui/material";
 
-export default function ViewStudentAssessment() 
-{
+export default function ViewStudentAssessment() {
+  const [assessments, setAssessments] = useState([]);
 
-  const [events, setEvents] = useState([]);
-
-  const fetchEvents = async () => {
+  const fetchAssessments = async () => {
     try {
       const response = await axios.get(`${config.url}/viewstudentassessment`);
-      setEvents(response.data);
+      setAssessments(response.data);
     } catch (error) {
-      console.error(error.message);
+      console.error("Error fetching assessments:", error.message);
     }
   };
 
   useEffect(() => {
-    fetchEvents();
+    fetchAssessments();
   }, []);
 
   return (
     <Container maxWidth="md" style={{ marginTop: 20 }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        View Student Assessment
+      <Typography variant="h4" align="center">
+        View Student Assessments
       </Typography>
+
       <TableContainer component={Paper}>
-        <Table style={{ border: '3px solid black' }}>
+        <Table>
           <TableHead>
-            <TableRow style={{ border: '3px solid black' }}>
-              <TableCell style={{ fontWeight: 'bold', borderRight: '3px solid black', borderBottom: '3px solid black' }}>Student Assessment File</TableCell>
+            <TableRow>
+              <TableCell>
+                <b>Student ID</b>
+              </TableCell>
+              <TableCell>
+                <b>Student Name</b>
+              </TableCell>
+              <TableCell>
+                <b>Courses</b>
+              </TableCell>
+              <TableCell>
+                <b>File</b>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {events.length > 0 ? (
-              events.map((event, index) => (
-                <TableRow key={index} style={{ border: '3px solid black' }}>
-                  <TableCell style={{ borderRight: '3px solid black', borderBottom: '3px solid black' }}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      {event.file.endsWith('.jpg') || event.file.endsWith('.jpeg') || event.file.endsWith('.png') ? (
-                        <img src={`${config.url}/viewstudentassessmentfile/${event.file}`} alt="Event" style={{ width: '150px', height: '150px', borderRadius: '5px' }} />
-                      ) : (
-                        <Button variant="contained" color="primary" component="a" href={`${config.url}/viewstudentassessmentfile/${event.file}`} style={{ marginLeft: 10 }}>Download File</Button>
-                      )}
-                    </div>
+            {assessments.length > 0 ? (
+              assessments.map((assessment, index) => (
+                <TableRow key={index}>
+                  <TableCell>{assessment.student?.studentid}</TableCell>
+                  <TableCell>{assessment.student?.studentname}</TableCell>
+                  <TableCell>
+                    {assessment.courses.map((course, idx) => (
+                      <div key={idx}>
+                        {course.coursecode} - {course.coursename}
+                      </div>
+                    ))}
+                  </TableCell>
+                  <TableCell>
+                    {assessment.file?.endsWith(".jpg") ||
+                    assessment.file?.endsWith(".png") ? (
+                      <img
+                        src={`${config.url}/viewstudentassessmentfile/${assessment.file}`}
+                        alt="Assessment"
+                        style={{ width: 150, height: 150 }}
+                      />
+                    ) : (
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        component="a"
+                        href={`${config.url}/viewstudentassessmentfile/${assessment.file}`}
+                        target="_blank"
+                      >
+                        Download File
+                      </Button>
+                    )}
                   </TableCell>
                 </TableRow>
               ))
             ) : (
-              <TableRow style={{ border: '3px solid black' }}>
-                <TableCell colSpan={4} align="center" style={{ borderBottom: '3px solid black' }}>No Assessment Data found</TableCell>
+              <TableRow>
+                <TableCell colSpan={4} align="center">
+                  No Assessment Data Found
+                </TableCell>
               </TableRow>
             )}
           </TableBody>

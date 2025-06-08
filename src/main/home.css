@@ -12,7 +12,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); /* Background color with RGBA values */
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)
+  ); /* Background color with RGBA values */
   backdrop-filter: blur(5px); /* Apply a blur effect */
 }
 
@@ -25,7 +28,7 @@
 }
 
 .explore-button button {
-  background-color:blue;
+  background-color: blue;
   border: none;
   color: white;
   padding: 15px 25px;
@@ -38,9 +41,8 @@
 }
 
 .explore-button button:hover {
-  background-color:blue;
+  background-color: blue;
 }
-
 
 .header-content {
   position: absolute;
@@ -254,4 +256,3 @@
   right: -35vh;
   width: 60vh;
 }
-

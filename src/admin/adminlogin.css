@@ -1,4 +1,3 @@
- 
 body {
   height: 100vh;
   justify-content: center;
@@ -12,7 +11,7 @@ body {
   height: 100%;
   width: 100%;
   max-width: 420px; /* Adjust this value based on your design */
-  padding:100px;
+  padding: 100px;
 }
 
 .login {
@@ -20,17 +19,16 @@ body {
   background: transparent;
   border: 3px solid rgba(200, 200, 200, 0.362);
   backdrop-filter: blur(30px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: black;
   border-radius: 10px;
   padding: 10px 40px;
-  
 }
 
 .login h1 {
   font-size: 36px;
   text-align: center;
-  color:red;
+  color: red;
 }
 
 .login .input-box {
@@ -47,7 +45,7 @@ body {
   width: 100%;
   height: 100%;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, .2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   outline: none;
   border-radius: 10px;
   font-size: 16px;
@@ -69,7 +67,6 @@ body {
   color: black;
 }
 
-
 .login .remember-forgot {
   display: flex;
   justify-content: space-between;
@@ -78,7 +75,7 @@ body {
 }
 
 .remember-forgot label input {
-  accent-color:black;
+  accent-color: black;
   margin-right: px;
 }
 
@@ -89,7 +86,7 @@ body {
 
 .remember-forgot a:hover {
   text-decoration: underline;
-  color:lightgray;
+  color: lightgray;
 }
 
 .login button {
@@ -104,9 +101,8 @@ body {
   font-size: 16px;
   color: #333;
   font-weight: 150;
-   
 }
 
-.login button:hover{
-  background:mediumaquamarine;
+.login button:hover {
+  background: mediumaquamarine;
 }

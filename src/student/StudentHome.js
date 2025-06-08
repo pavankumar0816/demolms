@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-export default function StudentHome(){ 
+export default function StudentHome() {
   const [studentData, setStudentData] = useState("");
 
   useEffect(() => {
-    const storedStudentData = localStorage.getItem('student');
+    const storedStudentData = localStorage.getItem("student");
     if (storedStudentData) {
       const parsedStudentData = JSON.parse(storedStudentData);
-      setStudentData(parsedStudentData)
+      setStudentData(parsedStudentData);
     }
   }, []);
 

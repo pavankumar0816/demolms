@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-export default function FacultyHome(){ 
+export default function FacultyHome() {
   const [facultydata, setFacultyData] = useState("");
 
   useEffect(() => {
-    const storedFacultyData = localStorage.getItem('faculty');
+    const storedFacultyData = localStorage.getItem("faculty");
     if (storedFacultyData) {
       const parsedFacultyData = JSON.parse(storedFacultyData);
-      setFacultyData(parsedFacultyData)
+      setFacultyData(parsedFacultyData);
     }
   }, []);
 
@@ -21,4 +21,3 @@ export default function FacultyHome(){
     </div>
   );
 }
-

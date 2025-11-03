@@ -45,7 +45,7 @@ export default function UploadAssessment() {
       const response = await axios.post(
         `${config.url}/uploadstudentassessment`,
         formDataToSend,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        { headers: { "Content-Type": "multipart/form-data" } },
       );
 
       if (response.status === 200) {
@@ -119,8 +119,12 @@ export default function UploadAssessment() {
           Upload Assessment
         </h2>
 
-        {message && <h4 style={{ color: "green", textAlign: "center" }}>{message}</h4>}
-        {error && <h4 style={{ color: "red", textAlign: "center" }}>{error}</h4>}
+        {message && (
+          <h4 style={{ color: "green", textAlign: "center" }}>{message}</h4>
+        )}
+        {error && (
+          <h4 style={{ color: "red", textAlign: "center" }}>{error}</h4>
+        )}
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <label style={labelStyle}>Select File</label>
@@ -166,11 +170,7 @@ export default function UploadAssessment() {
             required
           />
 
-          <button
-            type="submit"
-            style={buttonStyle}
-            disabled={loading}
-          >
+          <button type="submit" style={buttonStyle} disabled={loading}>
             {loading ? "Uploading..." : "Upload"}
           </button>
         </form>

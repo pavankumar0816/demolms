@@ -37,7 +37,10 @@ export default function FacultyHome() {
           <span style={nameLabelStyle}>Welcome, {facultyData.facultyname}</span>
           <div style={{ marginTop: "20px" }}>
             {/* You can place more faculty-related content here */}
-            <p>Here you can upload course content, manage assessments, and view mapped courses.</p>
+            <p>
+              Here you can upload course content, manage assessments, and view
+              mapped courses.
+            </p>
           </div>
         </div>
       )}

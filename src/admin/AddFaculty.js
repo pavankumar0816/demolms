@@ -80,7 +80,9 @@ export default function AddFaculty() {
               marginBottom: "15px",
             }}
           >
-            <label style={{ width: "40%", fontWeight: "bold" }}>Faculty Id</label>
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Faculty Id
+            </label>
             <input
               type="text"
               id="facultyid"

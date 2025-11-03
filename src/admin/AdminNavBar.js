@@ -102,7 +102,7 @@ export default function AdminNavBar() {
         >
           Home
         </Link>
-        <br/>
+        <br />
         <Link
           to="/changeadminpwd"
           style={linkStyle}
@@ -110,7 +110,8 @@ export default function AdminNavBar() {
           onMouseOut={(e) => (e.target.style.backgroundColor = "transparent")}
         >
           Change Password
-        </Link><br/>
+        </Link>
+        <br />
 
         {/* Students Dropdown */}
         <div>
@@ -138,7 +139,9 @@ export default function AdminNavBar() {
               </Link>
             </div>
           )}
-        </div><br/><br/>
+        </div>
+        <br />
+        <br />
 
         {/* Courses Dropdown */}
         <div>
@@ -166,7 +169,9 @@ export default function AdminNavBar() {
               </Link>
             </div>
           )}
-        </div><br/><br/>
+        </div>
+        <br />
+        <br />
 
         {/* Faculties Dropdown */}
         <div>
@@ -194,7 +199,8 @@ export default function AdminNavBar() {
               </Link>
             </div>
           )}
-        </div><br/> 
+        </div>
+        <br />
 
         {/* Mapping */}
         <Link
@@ -205,7 +211,8 @@ export default function AdminNavBar() {
         >
           Faculty-Course Mapping
         </Link>
-        <br/><br/>  
+        <br />
+        <br />
         {/* Logout */}
         <button style={buttonStyle} onClick={handleLogout}>
           Logout

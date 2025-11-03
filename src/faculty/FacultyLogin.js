@@ -22,7 +22,10 @@ export default function FacultyLogin({ onFacultyLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${config.url}/checkfacultylogin`, formData);
+      const response = await axios.post(
+        `${config.url}/checkfacultylogin`,
+        formData,
+      );
       if (response.data != null) {
         onFacultyLogin();
         localStorage.setItem("faculty", JSON.stringify(response.data));
@@ -40,7 +43,7 @@ export default function FacultyLogin({ onFacultyLogin }) {
   const styles = {
     page: {
       minHeight: "100vh",
-      background: "#1a1a2e",  
+      background: "#1a1a2e",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -49,7 +52,7 @@ export default function FacultyLogin({ onFacultyLogin }) {
     },
     box: {
       background: "linear-gradient(135deg, #6a11cb, #2575fc)", // purple-blue gradient
-      padding: "40px 30px", 
+      padding: "40px 30px",
       borderRadius: "15px",
       width: "100%",
       maxWidth: "400px",
@@ -78,7 +81,7 @@ export default function FacultyLogin({ onFacultyLogin }) {
       marginBottom: "25px",
     },
     input: {
-      width: "80%", 
+      width: "80%",
       padding: "10px 35px",
       border: "1px solid #4a5568",
       backgroundColor: "#1f2937",

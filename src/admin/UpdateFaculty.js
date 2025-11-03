@@ -46,7 +46,7 @@ export default function UpdateFaculty() {
         updatedData.facultyid = facultyData.facultyid;
         const response = await axios.put(
           `${config.url}/updatefaculty`,
-          updatedData
+          updatedData,
         );
         setMessage(response.data);
         setError("");
@@ -98,7 +98,9 @@ export default function UpdateFaculty() {
               marginBottom: "15px",
             }}
           >
-            <label style={{ width: "40%", fontWeight: "bold" }}>Faculty Id</label>
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Faculty Id
+            </label>
             <input
               type="text"
               id="facultyid"
@@ -159,7 +161,9 @@ export default function UpdateFaculty() {
               marginBottom: "15px",
             }}
           >
-            <label style={{ width: "40%", fontWeight: "bold" }}>Qualification</label>
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Qualification
+            </label>
             <input
               type="text"
               id="qualification"
@@ -178,7 +182,9 @@ export default function UpdateFaculty() {
               marginBottom: "15px",
             }}
           >
-            <label style={{ width: "40%", fontWeight: "bold" }}>Designation</label>
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Designation
+            </label>
             <input
               type="text"
               id="designation"

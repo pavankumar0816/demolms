@@ -28,7 +28,9 @@ export default function ViewFaculty() {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>View Faculty</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>
+        View Faculty
+      </h2>
 
       <table
         style={{

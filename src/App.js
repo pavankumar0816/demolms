@@ -12,8 +12,10 @@ export default function App() {
 
   useEffect(() => {
     const adminLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
-    const studentLoggedIn = localStorage.getItem("isStudentLoggedIn") === "true";
-    const facultyLoggedIn = localStorage.getItem("isFacultyLoggedIn") === "true";
+    const studentLoggedIn =
+      localStorage.getItem("isStudentLoggedIn") === "true";
+    const facultyLoggedIn =
+      localStorage.getItem("isFacultyLoggedIn") === "true";
 
     setIsAdminLoggedIn(adminLoggedIn);
     setIsStudentLoggedIn(studentLoggedIn);

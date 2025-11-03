@@ -41,7 +41,7 @@ export default function CourseContent() {
           headers: {
             "Content-Type": "multipart/form-data", // Set content type for FormData
           },
-        }
+        },
       );
 
       if (response.status === 200) {
@@ -204,7 +204,9 @@ export default function CourseContent() {
             type="submit"
             style={buttonStyle}
             onMouseOver={buttonHover}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#3b82f6")}
+            onMouseOut={(e) =>
+              (e.currentTarget.style.backgroundColor = "#3b82f6")
+            }
           >
             Upload
           </button>

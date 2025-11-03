@@ -191,9 +191,7 @@ export default function AddStudent() {
               marginBottom: "15px",
             }}
           >
-            <label style={{ width: "40%", fontWeight: "bold" }}>
-              Semester
-            </label>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Semester</label>
             <input
               type="text"
               id="semester"

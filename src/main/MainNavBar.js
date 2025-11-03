@@ -18,12 +18,12 @@ export default function MainNavBar({
 }) {
   return (
     <div className="navbar">
-      <div> 
-      <Link to="/">
-      <img src={lmslogo} alt="" className="logo" />
-      </Link>
+      <div>
+        <Link to="/">
+          <img src={lmslogo} alt="" className="logo" />
+        </Link>
       </div>
-{/* 
+      {/* 
       <nav>
         <ul>
           <Link to="/">Home</Link>

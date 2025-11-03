@@ -80,7 +80,9 @@ export default function AddCourse() {
               marginBottom: "15px",
             }}
           >
-            <label style={{ width: "40%", fontWeight: "bold" }}>Department</label>
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Department
+            </label>
             <select
               id="department"
               value={formData.department}

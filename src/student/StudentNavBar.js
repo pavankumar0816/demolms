@@ -92,7 +92,13 @@ export default function StudentNavBar() {
         <Link to="/studenthome">
           <img src={lmslogo} alt="Logo" style={logoStyle} />
         </Link>
-        <h2 style={{ color: "#1f2937", marginBottom: "20px", textAlign: "center" }}>
+        <h2
+          style={{
+            color: "#1f2937",
+            marginBottom: "20px",
+            textAlign: "center",
+          }}
+        >
           Student Dashboard
         </h2>
 
@@ -152,8 +158,12 @@ export default function StudentNavBar() {
         <br />
         <button
           style={logoutButtonStyle}
-          onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#ff6666")}
-          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#ef4444")}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#ff6666")
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.backgroundColor = "#ef4444")
+          }
           onClick={handleLogout}
         >
           Logout
@@ -165,10 +175,18 @@ export default function StudentNavBar() {
         <Routes>
           <Route path="/studenthome" element={<StudentHome />} exact />
           <Route path="/studentprofile" element={<StudentProfile />} exact />
-          <Route path="/registercourses" element={<RegistrationCourse />} exact />
+          <Route
+            path="/registercourses"
+            element={<RegistrationCourse />}
+            exact
+          />
           <Route path="/viewcontent" element={<ViewContent />} exact />
           <Route path="/viewassessment" element={<ViewAssessment />} exact />
-          <Route path="/uploadassessment" element={<UploadAssessment />} exact />
+          <Route
+            path="/uploadassessment"
+            element={<UploadAssessment />}
+            exact
+          />
         </Routes>
       </div>
     </div>

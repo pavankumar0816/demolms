@@ -119,7 +119,8 @@ const FacultyWithCourse = () => {
               marginBottom: "24px",
               fontWeight: "500",
               fontSize: "14px",
-              backgroundColor: message.type === "success" ? "#d1fae5" : "#fee2e2",
+              backgroundColor:
+                message.type === "success" ? "#d1fae5" : "#fee2e2",
               color: message.type === "success" ? "#065f46" : "#b91c1c",
               boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
             }}
@@ -213,12 +214,8 @@ const FacultyWithCourse = () => {
             boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
             transition: "all 0.3s",
           }}
-          onMouseEnter={(e) =>
-            (e.target.style.backgroundColor = "#3b82f6")
-          }
-          onMouseLeave={(e) =>
-            (e.target.style.backgroundColor = "#60a5fa")
-          }
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#3b82f6")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#60a5fa")}
         >
           Map Faculty & Course
         </button>

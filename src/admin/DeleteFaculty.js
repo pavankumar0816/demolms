@@ -37,7 +37,9 @@ export default function DeleteFaculty() {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>Delete Faculty</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>
+        Delete Faculty
+      </h2>
 
       <table
         style={{

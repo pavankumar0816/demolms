@@ -37,7 +37,9 @@ export default function DeleteCourse() {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>Delete Courses</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>
+        Delete Courses
+      </h2>
 
       <table
         style={{
@@ -82,7 +84,7 @@ export default function DeleteCourse() {
                 <td style={{ padding: "8px" }}>
                   <button
                     onClick={() => deleteCourse(course.coursecode)}
-                     style={{
+                    style={{
                       padding: "6px 12px",
                       backgroundColor: "#f44336",
                       color: "white",

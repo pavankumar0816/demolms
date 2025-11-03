@@ -22,7 +22,10 @@ export default function StudentLogin({ onStudentLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${config.url}/checkstudentlogin`, formData);
+      const response = await axios.post(
+        `${config.url}/checkstudentlogin`,
+        formData,
+      );
       if (response.data != null) {
         onStudentLogin();
         localStorage.setItem("student", JSON.stringify(response.data));
@@ -37,87 +40,87 @@ export default function StudentLogin({ onStudentLogin }) {
     }
   };
 
- const styles = {
-  page: {
-    minHeight: "100vh",
-    background: "#283046",  
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontFamily: "Arial, sans-serif",
-    padding: "20px",
-  },
-  box: {
-    background: "linear-gradient(135deg, #1e3c72, #2a5298)", 
-    padding: "40px 30px",        // smaller padding
-    borderRadius: "15px",        // slightly smaller corners
-    width: "100%",
-    maxWidth: "400px",           // smaller max width
-    boxShadow: "0 15px 35px rgba(0,0,0,0.6)", // smaller shadow
-    color: "#ffffff",
-  },
-  title: {
-    textAlign: "center",
-    fontSize: "26px", // smaller title
-    fontWeight: "bold",
-    marginBottom: "20px",
-    color: "#ffffff",
-  },
-  msg: {
-    color: "#f87171",
-    textAlign: "center",
-    marginBottom: "10px",
-  },
-  error: {
-    color: "#ef4444",
-    textAlign: "center",
-    marginBottom: "10px",
-  },
-  inputBox: {
-    position: "relative",
-    marginBottom: "25px", // smaller margin
-  },
-  input: {
-    width: "80%", 
-    padding: "10px 35px",  // smaller input padding
-    border: "1px solid #4a5568",
-    backgroundColor: "#1f2937",
-    color: "#fff",
-    borderRadius: "8px",
-    fontSize: "14px",      // smaller font
-    outline: "none",
-  },
-  icon: {
-    position: "absolute",
-    top: "50%",
-    left: "10px",
-    transform: "translateY(-50%)",
-    color: "#9ca3af",
-    fontSize: "16px", // smaller icon
-  },
-  rememberForgot: {
-    display: "flex",
-    justifyContent: "space-between",
-    fontSize: "12px", // smaller font
-    marginBottom: "20px",
-    color: "#e2e8f0",
-  },
-  forgotLink: {
-    color: "#63b3ed",
-    textDecoration: "none",
-  },
-  btn: {
-    width: "100%",
-    background: "white",
-    color: "black",
-    border: "none",
-    padding: "12px",     // smaller button height
-    borderRadius: "8px",
-    fontSize: "16px",    // smaller text
-    cursor: "pointer",
-    transition: "background 0.3s ease, transform 0.2s",
-  },
-};
+  const styles = {
+    page: {
+      minHeight: "100vh",
+      background: "#283046",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontFamily: "Arial, sans-serif",
+      padding: "20px",
+    },
+    box: {
+      background: "linear-gradient(135deg, #1e3c72, #2a5298)",
+      padding: "40px 30px", // smaller padding
+      borderRadius: "15px", // slightly smaller corners
+      width: "100%",
+      maxWidth: "400px", // smaller max width
+      boxShadow: "0 15px 35px rgba(0,0,0,0.6)", // smaller shadow
+      color: "#ffffff",
+    },
+    title: {
+      textAlign: "center",
+      fontSize: "26px", // smaller title
+      fontWeight: "bold",
+      marginBottom: "20px",
+      color: "#ffffff",
+    },
+    msg: {
+      color: "#f87171",
+      textAlign: "center",
+      marginBottom: "10px",
+    },
+    error: {
+      color: "#ef4444",
+      textAlign: "center",
+      marginBottom: "10px",
+    },
+    inputBox: {
+      position: "relative",
+      marginBottom: "25px", // smaller margin
+    },
+    input: {
+      width: "80%",
+      padding: "10px 35px", // smaller input padding
+      border: "1px solid #4a5568",
+      backgroundColor: "#1f2937",
+      color: "#fff",
+      borderRadius: "8px",
+      fontSize: "14px", // smaller font
+      outline: "none",
+    },
+    icon: {
+      position: "absolute",
+      top: "50%",
+      left: "10px",
+      transform: "translateY(-50%)",
+      color: "#9ca3af",
+      fontSize: "16px", // smaller icon
+    },
+    rememberForgot: {
+      display: "flex",
+      justifyContent: "space-between",
+      fontSize: "12px", // smaller font
+      marginBottom: "20px",
+      color: "#e2e8f0",
+    },
+    forgotLink: {
+      color: "#63b3ed",
+      textDecoration: "none",
+    },
+    btn: {
+      width: "100%",
+      background: "white",
+      color: "black",
+      border: "none",
+      padding: "12px", // smaller button height
+      borderRadius: "8px",
+      fontSize: "16px", // smaller text
+      cursor: "pointer",
+      transition: "background 0.3s ease, transform 0.2s",
+    },
+  };
 
   return (
     <div style={styles.page}>

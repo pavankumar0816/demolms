@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,10 @@ export default function AdminLogin({ onAdminLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${config.url}/checkadminlogin`, formData);
+      const response = await axios.post(
+        `${config.url}/checkadminlogin`,
+        formData,
+      );
       if (response.data != null) {
         onAdminLogin();
         localStorage.setItem("admin", JSON.stringify(response.data));
@@ -36,7 +39,7 @@ export default function AdminLogin({ onAdminLogin }) {
   const styles = {
     page: {
       minHeight: "100vh",
-      background: "#283046",  
+      background: "#283046",
       // background: "linear-gradient(135deg, #1e3c72, #2a5298)", // new gradient background
       display: "flex",
       alignItems: "center",
@@ -51,15 +54,15 @@ export default function AdminLogin({ onAdminLogin }) {
       gap: "40px",
       flexWrap: "wrap",
     },
-  box: {
- background: "linear-gradient(135deg, #1e3c72, #2a5298)",      // card background
-  padding: "80px 100px",        // increased padding
-  borderRadius: "20px",        // rounded corners
-  width: "100%",                // let maxWidth control the size
-  maxWidth: "700px",           // bigger card
-  boxShadow: "0 25px 60px rgba(0,0,0,0.6)", // deeper shadow
-  color: "#ffffff",
-},
+    box: {
+      background: "linear-gradient(135deg, #1e3c72, #2a5298)", // card background
+      padding: "80px 100px", // increased padding
+      borderRadius: "20px", // rounded corners
+      width: "100%", // let maxWidth control the size
+      maxWidth: "700px", // bigger card
+      boxShadow: "0 25px 60px rgba(0,0,0,0.6)", // deeper shadow
+      color: "#ffffff",
+    },
 
     title: {
       textAlign: "center",
@@ -162,7 +165,8 @@ export default function AdminLogin({ onAdminLogin }) {
 
             <div style={styles.rememberForgot}>
               <label>
-                <input type="checkbox" style={{ marginRight: "5px" }} /> Remember Me
+                <input type="checkbox" style={{ marginRight: "5px" }} />{" "}
+                Remember Me
               </label>
               <a href="/forgot-password" style={styles.forgotLink}>
                 Forgot Password?

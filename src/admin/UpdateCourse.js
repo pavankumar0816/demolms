@@ -44,7 +44,10 @@ export default function UpdateCourse() {
       }
       if (Object.keys(updatedData).length !== 0) {
         updatedData.coursecode = courseData.coursecode;
-        const response = await axios.put(`${config.url}/updatecourse`, updatedData);
+        const response = await axios.put(
+          `${config.url}/updatecourse`,
+          updatedData,
+        );
         setMessage(response.data);
         setError("");
         localStorage.setItem("course", JSON.stringify(courseData));
@@ -88,8 +91,16 @@ export default function UpdateCourse() {
 
         <form onSubmit={handleSubmit}>
           {/* Department */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
-            <label style={{ width: "40%", fontWeight: "bold" }}>Department</label>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "15px",
+            }}
+          >
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Department
+            </label>
             <select
               id="department"
               value={courseData.department}
@@ -107,7 +118,13 @@ export default function UpdateCourse() {
           </div>
 
           {/* Program */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "15px",
+            }}
+          >
             <label style={{ width: "40%", fontWeight: "bold" }}>Program</label>
             <select
               id="program"
@@ -124,8 +141,16 @@ export default function UpdateCourse() {
           </div>
 
           {/* Academic Year */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
-            <label style={{ width: "40%", fontWeight: "bold" }}>Academic Year</label>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "15px",
+            }}
+          >
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Academic Year
+            </label>
             <select
               id="academicyear"
               value={courseData.academicyear}
@@ -142,7 +167,13 @@ export default function UpdateCourse() {
           </div>
 
           {/* Year */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "15px",
+            }}
+          >
             <label style={{ width: "40%", fontWeight: "bold" }}>Year</label>
             <input
               type="text"
@@ -156,7 +187,13 @@ export default function UpdateCourse() {
           </div>
 
           {/* Semester */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "15px",
+            }}
+          >
             <label style={{ width: "40%", fontWeight: "bold" }}>Semester</label>
             <select
               id="semester"
@@ -172,8 +209,16 @@ export default function UpdateCourse() {
           </div>
 
           {/* Course Code */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
-            <label style={{ width: "40%", fontWeight: "bold" }}>Course Code</label>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "15px",
+            }}
+          >
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Course Code
+            </label>
             <input
               type="text"
               id="coursecode"
@@ -186,8 +231,16 @@ export default function UpdateCourse() {
           </div>
 
           {/* Course Name */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
-            <label style={{ width: "40%", fontWeight: "bold" }}>Course Name</label>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "20px",
+            }}
+          >
+            <label style={{ width: "40%", fontWeight: "bold" }}>
+              Course Name
+            </label>
             <input
               type="text"
               id="coursename"

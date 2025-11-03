@@ -46,7 +46,7 @@ export default function UpdateStudent() {
         updatedData.studentid = studentData.studentid;
         const response = await axios.put(
           `${config.url}/updatestudent`,
-          updatedData
+          updatedData,
         );
         setMessage(response.data);
         setError("");

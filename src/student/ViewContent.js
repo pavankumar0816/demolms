@@ -1,17 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Container,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Typography,
-  Button,
-} from "@mui/material"; // Import Material-UI components
 import config from "../config";
 
 export default function ViewContent() {
@@ -30,127 +18,130 @@ export default function ViewContent() {
     fetchEvents();
   }, []);
 
+  // Styles
+  const pageStyle = {
+    minHeight: "100vh",
+    backgroundColor: "#2F2F2F", // light grey background
+    padding: "40px 20px",
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+  };
+
+  const containerStyle = {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    backgroundColor: "#ffffff",
+    padding: "20px",
+    borderRadius: "15px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+  };
+
+  const headingStyle = {
+    textAlign: "center",
+    marginBottom: "20px",
+    color: "#1f2937",
+    fontSize: "28px",
+    fontWeight: "700",
+  };
+
+  const tableStyle = {
+    width: "100%",
+    borderCollapse: "collapse",
+  };
+
+  const thStyle = {
+    padding: "12px",
+    fontWeight: "600",
+    textAlign: "center",
+    backgroundColor: "#e5e7eb", // light grey header
+    border: "1px solid #d1d5db",
+  };
+
+  const tdStyle = {
+    padding: "12px",
+    textAlign: "center",
+    border: "1px solid #e5e7eb",
+  };
+
+  const imageStyle = {
+    width: "150px",
+    height: "150px",
+    borderRadius: "5px",
+  };
+
+  const buttonStyle = {
+    padding: "6px 12px",
+    backgroundColor: "#3b82f6",
+    color: "#ffffff",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
+    fontWeight: "600",
+    transition: "all 0.3s ease",
+    textDecoration: "none",
+  };
+
+  const buttonHover = (e) => {
+    e.currentTarget.style.backgroundColor = "#2563eb";
+  };
+
+  const buttonOut = (e) => {
+    e.currentTarget.style.backgroundColor = "#3b82f6";
+  };
+
   return (
-    <Container maxWidth="md" style={{ marginTop: 20 }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        View Content
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell
-                style={{
-                  fontWeight: "bold",
-                  borderRight: "3px solid black",
-                  borderBottom: "3px solid black",
-                }}
-              >
-                Course
-              </TableCell>
-              <TableCell
-                style={{
-                  fontWeight: "bold",
-                  borderRight: "3px solid black",
-                  borderBottom: "3px solid black",
-                }}
-              >
-                Topic
-              </TableCell>
-              <TableCell
-                style={{
-                  fontWeight: "bold",
-                  borderRight: "3px solid black",
-                  borderBottom: "3px solid black",
-                }}
-              >
-                Description
-              </TableCell>
-              <TableCell
-                style={{
-                  fontWeight: "bold",
-                  borderRight: "3px solid black",
-                  borderBottom: "3px solid black",
-                }}
-              >
-                Date
-              </TableCell>
-              <TableCell>Content File</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
+    <div style={pageStyle}>
+      <div style={containerStyle}>
+        <h3 style={headingStyle}>View Content</h3>
+        <table style={tableStyle}>
+          <thead>
+            <tr>
+              <th style={thStyle}>Course</th>
+              <th style={thStyle}>Topic</th>
+              <th style={thStyle}>Description</th>
+              <th style={thStyle}>Date</th>
+              <th style={thStyle}>Content File</th>
+            </tr>
+          </thead>
+          <tbody>
             {events.length > 0 ? (
               events.map((event, index) => (
-                <TableRow key={index} style={{ marginBottom: 20 }}>
-                  <TableCell
-                    style={{
-                      borderRight: "3px solid black",
-                      borderBottom: "3px solid black",
-                    }}
-                  >
-                    {event.course}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderRight: "3px solid black",
-                      borderBottom: "3px solid black",
-                    }}
-                  >
-                    {event.topic}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderRight: "3px solid black",
-                      borderBottom: "3px solid black",
-                    }}
-                  >
-                    {event.description}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderRight: "3px solid black",
-                      borderBottom: "3px solid black",
-                    }}
-                  >
-                    {event.date}
-                  </TableCell>
-                  <TableCell>
+                <tr key={index}>
+                  <td style={tdStyle}>{event.course}</td>
+                  <td style={tdStyle}>{event.topic}</td>
+                  <td style={tdStyle}>{event.description}</td>
+                  <td style={tdStyle}>{event.date}</td>
+                  <td style={tdStyle}>
                     {event.file.endsWith(".jpg") ||
                     event.file.endsWith(".jpeg") ||
                     event.file.endsWith(".png") ? (
                       <img
                         src={`${config.url}/contentfile/${event.file}`}
                         alt="Event"
-                        style={{
-                          width: "150px",
-                          height: "150px",
-                          borderRadius: "5px",
-                        }}
+                        style={imageStyle}
                       />
                     ) : (
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        component="a"
+                      <a
                         href={`${config.url}/contentfile/${event.file}`}
-                        style={{ marginLeft: 10 }}
+                        style={buttonStyle}
+                        onMouseOver={buttonHover}
+                        onMouseOut={buttonOut}
                       >
                         Download File
-                      </Button>
+                      </a>
                     )}
-                  </TableCell>
-                </TableRow>
+                  </td>
+                </tr>
               ))
             ) : (
-              <TableRow>
-                <TableCell colSpan={5} align="center">
+              <tr>
+                <td colSpan={5} style={{ ...tdStyle, color: "#ef4444" }}>
                   No Course Content found
-                </TableCell>
-              </TableRow>
+                </td>
+              </tr>
             )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }

@@ -24,8 +24,36 @@ export default function AdminHome() {
 
   return (
     <div
-      style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+      style={{
+        backgroundColor: "#111111", // Dark background
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "40px 20px",
+        flexDirection: "column", // Stack heading and cards vertically
+      }}
     >
+      {/* Heading Section */}
+      <div style={{ textAlign: "center", marginBottom: "40px" }}>
+        <h1
+          style={{
+            color: "#ffffff",
+            fontSize: "36px",
+            fontWeight: "700",
+            letterSpacing: "1px",
+            textTransform: "uppercase",
+            margin: 0,
+          }}
+        >
+          Admin Dashboard
+        </h1>
+        <p style={{ color: "#d1d5db", fontSize: "16px", marginTop: "8px" }}>
+          Overview of Students, Faculty, and Courses
+        </p>
+      </div>
+
+      {/* Cards Row */}
       <div
         style={{
           display: "flex",
@@ -36,26 +64,34 @@ export default function AdminHome() {
       >
         <div style={cardStyle}>
           <div style={cardHeaderStyle}>
-            <h3>Students</h3>
+            <h3 style={{ color: "#111111" }}>Total Students</h3>
           </div>
           <div style={cardContentStyle}>
-            <p>Student Count: {counts.studentCount}</p>
+            <p style={{ fontSize: "20px", fontWeight: "600" }}>
+              {counts.studentCount}
+            </p>
           </div>
         </div>
+
         <div style={cardStyle}>
           <div style={cardHeaderStyle}>
-            <h3>Faculty</h3>
+            <h3 style={{ color: "#111111" }}>Total Faculties</h3>
           </div>
           <div style={cardContentStyle}>
-            <p>Faculty Count: {counts.facultyCount}</p>
+            <p style={{ fontSize: "20px", fontWeight: "600" }}>
+              {counts.facultyCount}
+            </p>
           </div>
         </div>
+
         <div style={cardStyle}>
           <div style={cardHeaderStyle}>
-            <h3>Courses</h3>
+            <h3 style={{ color: "#111111" }}>Total Courses</h3>
           </div>
           <div style={cardContentStyle}>
-            <p>Course Count: {counts.courseCount}</p>
+            <p style={{ fontSize: "20px", fontWeight: "600" }}>
+              {counts.courseCount}
+            </p>
           </div>
         </div>
       </div>
@@ -65,11 +101,12 @@ export default function AdminHome() {
 
 const cardStyle = {
   width: "30%",
-  background: "#f4f4f4",
-  border: "1px solid #ddd",
-  borderRadius: "5px",
+  background: "#f3f4f6",
+  borderRadius: "12px",
   padding: "20px",
-  margin: "0 10px", // Added margin to separate the cards
+  margin: "0 10px",
+  boxShadow: "0 8px 16px rgba(0,0,0,0.3)",
+  textAlign: "center",
 };
 
 const cardHeaderStyle = {

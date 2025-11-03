@@ -28,41 +28,68 @@ export default function DeleteCourse() {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h2>Delete Courses</h2>
+    <div
+      style={{
+        backgroundColor: "grey",
+        minHeight: "100vh",
+        padding: "40px",
+        color: "white",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>Delete Courses</h2>
 
       <table
-        border={1}
-        align="center"
-        style={{ width: "auto", height: "auto" }}
+        style={{
+          width: "90%",
+          margin: "0 auto",
+          borderCollapse: "collapse",
+          textAlign: "center",
+          backgroundColor: "#f9f9f9", // lighter table background
+          color: "black",
+          borderRadius: "8px",
+          overflow: "hidden",
+        }}
       >
         <thead>
-          <tr>
-            <th>Department</th>
-            <th>Program</th>
-            <th>Academic Year</th>
-            <th>Year</th>
-            <th>Semester</th>
-            <th>Course Code</th>
-            <th>Course Name</th>
-            <th>Action</th>
+          <tr style={{ backgroundColor: "#4CAF50", color: "white" }}>
+            <th style={{ padding: "10px" }}>Department</th>
+            <th style={{ padding: "10px" }}>Program</th>
+            <th style={{ padding: "10px" }}>Academic Year</th>
+            <th style={{ padding: "10px" }}>Year</th>
+            <th style={{ padding: "10px" }}>Semester</th>
+            <th style={{ padding: "10px" }}>Course Code</th>
+            <th style={{ padding: "10px" }}>Course Name</th>
+            <th style={{ padding: "10px" }}>Action</th>
           </tr>
         </thead>
         <tbody>
           {Array.isArray(courses) && courses.length > 0 ? (
             courses.map((course, index) => (
-              <tr key={index}>
-                <td>{course.department}</td>
-                <td>{course.program}</td>
-                <td>{course.academicyear}</td>
-                <td>{course.semester}</td>
-                <td>{course.year}</td>
-                <td>{course.coursecode}</td>
-                <td>{course.coursename}</td>
-                <td>
+              <tr
+                key={index}
+                style={{
+                  backgroundColor: index % 2 === 0 ? "#ffffff" : "#e8f5e9",
+                }}
+              >
+                <td style={{ padding: "8px" }}>{course.department}</td>
+                <td style={{ padding: "8px" }}>{course.program}</td>
+                <td style={{ padding: "8px" }}>{course.academicyear}</td>
+                <td style={{ padding: "8px" }}>{course.year}</td>
+                <td style={{ padding: "8px" }}>{course.semester}</td>
+                <td style={{ padding: "8px" }}>{course.coursecode}</td>
+                <td style={{ padding: "8px" }}>{course.coursename}</td>
+                <td style={{ padding: "8px" }}>
                   <button
                     onClick={() => deleteCourse(course.coursecode)}
-                    className="button-62"
+                     style={{
+                      padding: "6px 12px",
+                      backgroundColor: "#f44336",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                    }}
                   >
                     Delete
                   </button>
@@ -71,7 +98,12 @@ export default function DeleteCourse() {
             ))
           ) : (
             <tr>
-              <td colSpan="9"> Courses Data Not Found</td>
+              <td
+                colSpan="8"
+                style={{ padding: "15px", color: "red", fontWeight: "bold" }}
+              >
+                Courses Data Not Found
+              </td>
             </tr>
           )}
         </tbody>

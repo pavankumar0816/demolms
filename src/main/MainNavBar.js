@@ -18,23 +18,17 @@ export default function MainNavBar({
 }) {
   return (
     <div className="navbar">
+      <div> 
+      <Link to="/">
       <img src={lmslogo} alt="" className="logo" />
-
+      </Link>
+      </div>
+{/* 
       <nav>
         <ul>
           <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-          <li className="dropdown">
-            <Link>Login</Link>
-            <div className="dropdown-content">
-              <Link to="/studentlogin">Student Login</Link>
-              <Link to="/facultylogin">Faculty Login</Link>
-              <Link to="/adminlogin">Admin Login</Link>
-            </div>
-          </li>
         </ul>
-      </nav>
+      </nav> */}
 
       <Routes>
         <Route path="/" element={<Home />} exact />

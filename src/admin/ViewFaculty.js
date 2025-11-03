@@ -19,41 +19,66 @@ export default function ViewFaculty() {
   }, []);
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h2>View Facultys</h2>
+    <div
+      style={{
+        backgroundColor: "grey",
+        minHeight: "100vh",
+        padding: "40px",
+        color: "white",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>View Faculty</h2>
 
       <table
-        border={1}
-        align="center"
-        style={{ width: "auto", height: "auto" }}
+        style={{
+          width: "90%",
+          margin: "0 auto",
+          borderCollapse: "collapse",
+          textAlign: "center",
+          backgroundColor: "#f9f9f9",
+          color: "black",
+          borderRadius: "8px",
+          overflow: "hidden",
+        }}
       >
         <thead>
-          <tr>
-            <th>Faculty ID</th>
-            <th>Faculty Name</th>
-            <th>Faculty Department</th>
-            <th>Qualification</th>
-            <th>Designation</th>
-            <th>Email</th>
-            <th>Contact</th>
+          <tr style={{ backgroundColor: "#4CAF50", color: "white" }}>
+            <th style={{ padding: "10px" }}>Faculty ID</th>
+            <th style={{ padding: "10px" }}>Faculty Name</th>
+            <th style={{ padding: "10px" }}>Faculty Department</th>
+            <th style={{ padding: "10px" }}>Qualification</th>
+            <th style={{ padding: "10px" }}>Designation</th>
+            <th style={{ padding: "10px" }}>Email</th>
+            <th style={{ padding: "10px" }}>Contact</th>
           </tr>
         </thead>
         <tbody>
           {Array.isArray(faculty) && faculty.length > 0 ? (
-            faculty.map((faculty, index) => (
-              <tr key={index}>
-                <td>{faculty.facultyid}</td>
-                <td>{faculty.facultyname}</td>
-                <td>{faculty.facultydept}</td>
-                <td>{faculty.qualification}</td>
-                <td>{faculty.designation}</td>
-                <td>{faculty.email}</td>
-                <td>{faculty.contact}</td>
+            faculty.map((f, index) => (
+              <tr
+                key={index}
+                style={{
+                  backgroundColor: index % 2 === 0 ? "#ffffff" : "#e8f5e9",
+                }}
+              >
+                <td style={{ padding: "8px" }}>{f.facultyid}</td>
+                <td style={{ padding: "8px" }}>{f.facultyname}</td>
+                <td style={{ padding: "8px" }}>{f.facultydept}</td>
+                <td style={{ padding: "8px" }}>{f.qualification}</td>
+                <td style={{ padding: "8px" }}>{f.designation}</td>
+                <td style={{ padding: "8px" }}>{f.email}</td>
+                <td style={{ padding: "8px" }}>{f.contact}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="9"> Faculty Data Not Found</td>
+              <td
+                colSpan="7"
+                style={{ padding: "15px", color: "red", fontWeight: "bold" }}
+              >
+                Faculty Data Not Found
+              </td>
             </tr>
           )}
         </tbody>

@@ -25,7 +25,6 @@ const FacultyWithCourse = () => {
         });
       }
     };
-
     fetchData();
   }, []);
 
@@ -47,7 +46,6 @@ const FacultyWithCourse = () => {
       setMessage({ text: `✅ ${response.data.message}`, type: "success" });
     } catch (error) {
       console.error("Error mapping Faculty with course:", error);
-
       if (error.response) {
         if (error.response.status === 400) {
           setMessage({
@@ -73,36 +71,89 @@ const FacultyWithCourse = () => {
       }
     }
 
-    // Clear message after 3 seconds
     setTimeout(() => setMessage({ text: "", type: "" }), 3000);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-md border border-gray-200">
-        <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        backgroundColor: "black",
+        padding: "24px",
+      }}
+    >
+      <div
+        style={{
+          background: "#ffffff",
+          borderRadius: "24px",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+          padding: "32px",
+          width: "100%",
+          maxWidth: "500px",
+          border: "1px solid #e5e7eb",
+          transition: "box-shadow 0.3s",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "24px",
+            fontWeight: "700",
+            textAlign: "center",
+            marginBottom: "24px",
+            color: "#1f2937",
+          }}
+        >
           Map Faculty with Course
         </h2>
 
+        {/* Message Box */}
         {message.text && (
           <div
-            className={`p-2 text-center rounded-md mb-4 ${message.type === "success" ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"}`}
+            style={{
+              padding: "12px",
+              textAlign: "center",
+              borderRadius: "12px",
+              marginBottom: "24px",
+              fontWeight: "500",
+              fontSize: "14px",
+              backgroundColor: message.type === "success" ? "#d1fae5" : "#fee2e2",
+              color: message.type === "success" ? "#065f46" : "#b91c1c",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+            }}
           >
             {message.text}
           </div>
         )}
 
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-1">
-            Select Faculty:
+        {/* Faculty Dropdown */}
+        <div style={{ marginBottom: "20px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#374151",
+              fontWeight: "600",
+              marginBottom: "8px",
+            }}
+          >
+            Select Faculty
           </label>
           <select
-            className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
-            onChange={(e) => setSelectedFaculty(e.target.value)}
             value={selectedFaculty}
+            onChange={(e) => setSelectedFaculty(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "16px",
+              border: "1px solid #d1d5db",
+              outline: "none",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            }}
           >
             <option value="" disabled>
-              Select Faculty
+              -- Select Faculty --
             </option>
             {facultyList.map((faculty) => (
               <option key={faculty.facultyid} value={faculty.facultyid}>
@@ -112,17 +163,32 @@ const FacultyWithCourse = () => {
           </select>
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-1">
-            Select Course:
+        {/* Course Dropdown */}
+        <div style={{ marginBottom: "24px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#374151",
+              fontWeight: "600",
+              marginBottom: "8px",
+            }}
+          >
+            Select Course
           </label>
           <select
-            className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
-            onChange={(e) => setSelectedCourse(e.target.value)}
             value={selectedCourse}
+            onChange={(e) => setSelectedCourse(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "16px",
+              border: "1px solid #d1d5db",
+              outline: "none",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            }}
           >
             <option value="" disabled>
-              Select Course
+              -- Select Course --
             </option>
             {courseList.map((course) => (
               <option key={course.coursecode} value={course.coursecode}>
@@ -132,9 +198,27 @@ const FacultyWithCourse = () => {
           </select>
         </div>
 
+        {/* Map Button */}
         <button
           onClick={handleMap}
-          className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition-all duration-200"
+          style={{
+            width: "100%",
+            padding: "16px",
+            borderRadius: "16px",
+            backgroundColor: "#60a5fa",
+            color: "red",
+            fontWeight: "600",
+            border: "none",
+            cursor: "pointer",
+            boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
+            transition: "all 0.3s",
+          }}
+          onMouseEnter={(e) =>
+            (e.target.style.backgroundColor = "#3b82f6")
+          }
+          onMouseLeave={(e) =>
+            (e.target.style.backgroundColor = "#60a5fa")
+          }
         >
           Map Faculty & Course
         </button>

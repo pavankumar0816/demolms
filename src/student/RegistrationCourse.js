@@ -24,63 +24,144 @@ export default function RegistrationCourse() {
     try {
       await axios.post(`${config.url}/registercourses/${coursecode}`);
       setMessage("Course Registered Successfully");
+      setError("");
       fetchCourses(); // Refresh the courses list after registration
     } catch (e) {
       setError(e.message);
+      setMessage("");
     }
   };
 
+  // Styles
+  const pageStyle = {
+    minHeight: "100vh",
+    backgroundColor: "#2F2F2F", // Light grey background
+    padding: "40px 20px",
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+  };
+
+  const tableContainerStyle = {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    backgroundColor: "#ffffff",
+    padding: "20px",
+    borderRadius: "15px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+  };
+
+  const headingStyle = {
+    textAlign: "center",
+    marginBottom: "20px",
+    color: "#1f2937",
+    fontSize: "28px",
+    fontWeight: "700",
+  };
+
+  const messageStyle = {
+    textAlign: "center",
+    color: "#16a34a", // green message
+    marginBottom: "15px",
+    fontWeight: "600",
+  };
+
+  const errorStyle = {
+    textAlign: "center",
+    color: "#ef4444", // red error
+    marginBottom: "15px",
+    fontWeight: "600",
+  };
+
+  const tableStyle = {
+    width: "100%",
+    borderCollapse: "collapse",
+  };
+
+  const thStyle = {
+    backgroundColor: "#e5e7eb",
+    padding: "12px",
+    fontWeight: "600",
+    textAlign: "center",
+    borderBottom: "2px solid #d1d5db",
+  };
+
+  const tdStyle = {
+    padding: "10px",
+    textAlign: "center",
+    borderBottom: "1px solid #e5e7eb",
+  };
+
+  const buttonStyle = {
+    padding: "6px 12px",
+    backgroundColor: "#3b82f6",
+    color: "#ffffff",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
+    fontWeight: "600",
+    transition: "all 0.3s ease",
+  };
+
+  const buttonHover = (e) => {
+    e.currentTarget.style.backgroundColor = "#2563eb";
+  };
+
+  const buttonOut = (e) => {
+    e.currentTarget.style.backgroundColor = "#3b82f6";
+  };
+
   return (
-    <div className="table-container">
-      <h3 align="center">Registered Courses</h3>
-      {message ? (
-        <h4 align="center">{message}</h4>
-      ) : (
-        <h4 align="center" style={{ color: "red" }}>
-          {error}
-        </h4>
-      )}
-      <table className="job-table mx-auto" align="center">
-        <thead>
-          <tr>
-            <th>Department</th>
-            <th>Program</th>
-            <th>Academic Year</th>
-            <th>Year</th>
-            <th>Semester</th>
-            <th>Course Code</th>
-            <th>Course Name</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.isArray(courses) && courses.length > 0 ? (
-            courses.map((course, index) => (
-              <tr key={index}>
-                <td>{course.department}</td>
-                <td>{course.program}</td>
-                <td>{course.academicyear}</td>
-                <td>{course.year}</td>
-                <td>{course.semester}</td>
-                <td>{course.coursecode}</td>
-                <td>{course.coursename}</td>
-                <td>
-                  <button
-                    onClick={() => registerCourse(course.coursecode)}
-                    className="button-62"
-                  >
-                    REGISTER
-                  </button>
+    <div style={pageStyle}>
+      <div style={tableContainerStyle}>
+        <h3 style={headingStyle}>Course Registration</h3>
+        {message && <div style={messageStyle}>{message}</div>}
+        {error && <div style={errorStyle}>{error}</div>}
+
+        <table style={tableStyle}>
+          <thead>
+            <tr>
+              <th style={thStyle}>Department</th>
+              <th style={thStyle}>Program</th>
+              <th style={thStyle}>Academic Year</th>
+              <th style={thStyle}>Year</th>
+              <th style={thStyle}>Semester</th>
+              <th style={thStyle}>Course Code</th>
+              <th style={thStyle}>Course Name</th>
+              <th style={thStyle}>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Array.isArray(courses) && courses.length > 0 ? (
+              courses.map((course, index) => (
+                <tr key={index}>
+                  <td style={tdStyle}>{course.department}</td>
+                  <td style={tdStyle}>{course.program}</td>
+                  <td style={tdStyle}>{course.academicyear}</td>
+                  <td style={tdStyle}>{course.year}</td>
+                  <td style={tdStyle}>{course.semester}</td>
+                  <td style={tdStyle}>{course.coursecode}</td>
+                  <td style={tdStyle}>{course.coursename}</td>
+                  <td style={tdStyle}>
+                    <button
+                      style={buttonStyle}
+                      onClick={() => registerCourse(course.coursecode)}
+                      onMouseOver={buttonHover}
+                      onMouseOut={buttonOut}
+                    >
+                      REGISTER
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="8" style={{ ...tdStyle, color: "#ef4444" }}>
+                  Data Not Found
                 </td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="9">Data Not Found</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

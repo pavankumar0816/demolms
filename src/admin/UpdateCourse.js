@@ -43,18 +43,12 @@ export default function UpdateCourse() {
         }
       }
       if (Object.keys(updatedData).length !== 0) {
-        // There are changes
         updatedData.coursecode = courseData.coursecode;
-        const response = await axios.put(
-          `${config.url}/updatecourse`,
-          updatedData,
-        );
+        const response = await axios.put(`${config.url}/updatecourse`, updatedData);
         setMessage(response.data);
         setError("");
-        // No need to make a GET request here
-        localStorage.setItem("course", JSON.stringify(updatedData));
+        localStorage.setItem("course", JSON.stringify(courseData));
       } else {
-        // No changes
         setMessage("No Changes in Course Data");
         setError("");
       }
@@ -65,111 +59,165 @@ export default function UpdateCourse() {
   };
 
   return (
-    <div>
-      <h3 align="center">
-        <u>Update Course</u>
-      </h3>
-      {message ? (
-        <h4 align="center">{message}</h4>
-      ) : (
-        <h4 align="center" style={{ color: "red" }}>
-          {error}
-        </h4>
-      )}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Department</label>
-          <select
-            id="department"
-            value={courseData.department}
-            onChange={handleChange}
-            required
+    <div
+      style={{
+        backgroundColor: "black",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "lightblue",
+          padding: "30px",
+          borderRadius: "8px",
+          width: "500px",
+          boxShadow: "0px 4px 10px rgba(255,255,255,0.2)",
+        }}
+      >
+        <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
+          <u>Update Course</u>
+        </h3>
+        {message ? (
+          <h4 style={{ textAlign: "center", color: "green" }}>{message}</h4>
+        ) : (
+          <h4 style={{ textAlign: "center", color: "red" }}>{error}</h4>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          {/* Department */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Department</label>
+            <select
+              id="department"
+              value={courseData.department}
+              onChange={handleChange}
+              required
+              style={{ width: "55%", padding: "8px", borderRadius: "5px" }}
+            >
+              <option value="">---Select Department---</option>
+              <option value="cse-h">CSE-H</option>
+              <option value="cse-r">CSE-R</option>
+              <option value="cs&it">CS & IT</option>
+              <option value="aids">AIDS</option>
+              <option value="ece">ECE</option>
+            </select>
+          </div>
+
+          {/* Program */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Program</label>
+            <select
+              id="program"
+              value={courseData.program}
+              onChange={handleChange}
+              required
+              style={{ width: "55%", padding: "8px", borderRadius: "5px" }}
+            >
+              <option value="">---Select Program---</option>
+              <option value="B.TECH">B.TECH</option>
+              <option value="M.TECH">M.TECH</option>
+              <option value="PHD">PHD</option>
+            </select>
+          </div>
+
+          {/* Academic Year */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Academic Year</label>
+            <select
+              id="academicyear"
+              value={courseData.academicyear}
+              onChange={handleChange}
+              required
+              style={{ width: "55%", padding: "8px", borderRadius: "5px" }}
+            >
+              <option value="">---Select Academic Year---</option>
+              <option value="2023-2024">2023-2024</option>
+              <option value="2022-2023">2022-2023</option>
+              <option value="2021-2022">2021-2022</option>
+              <option value="2020-2021">2020-2021</option>
+            </select>
+          </div>
+
+          {/* Year */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Year</label>
+            <input
+              type="text"
+              id="year"
+              value={courseData.year}
+              onChange={handleChange}
+              placeholder="Enter Year"
+              required
+              style={{ width: "55%", padding: "8px", borderRadius: "5px" }}
+            />
+          </div>
+
+          {/* Semester */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Semester</label>
+            <select
+              id="semester"
+              value={courseData.semester}
+              onChange={handleChange}
+              required
+              style={{ width: "55%", padding: "8px", borderRadius: "5px" }}
+            >
+              <option value="">---Select Semester---</option>
+              <option value="odd">ODD</option>
+              <option value="even">EVEN</option>
+            </select>
+          </div>
+
+          {/* Course Code */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "15px" }}>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Course Code</label>
+            <input
+              type="text"
+              id="coursecode"
+              value={courseData.coursecode}
+              onChange={handleChange}
+              placeholder="Enter Course Code"
+              required
+              style={{ width: "55%", padding: "8px", borderRadius: "5px" }}
+            />
+          </div>
+
+          {/* Course Name */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
+            <label style={{ width: "40%", fontWeight: "bold" }}>Course Name</label>
+            <input
+              type="text"
+              id="coursename"
+              value={courseData.coursename}
+              onChange={handleChange}
+              placeholder="Enter Course Name"
+              required
+              style={{ width: "55%", padding: "8px", borderRadius: "5px" }}
+            />
+          </div>
+
+          {/* Button */}
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "12px",
+              backgroundColor: "darkblue",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "16px",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
           >
-            <option value="">---Select Department---</option>
-            <option value="cse-h">CSE-H</option>
-            <option value="cse-r">CSE-R</option>
-            <option value="cs&it">CS & IT</option>
-            <option value="aids">AIDS</option>
-            <option value="ece">ECE</option>
-          </select>
-        </div>
-        <div>
-          <label>Program</label>
-          <select
-            id="program"
-            value={courseData.program}
-            onChange={handleChange}
-            required
-          >
-            <option value="">---Select Program---</option>
-            <option value="B.TECH">B.TECH</option>
-            <option value="M.TECH">M.TECH</option>
-            <option value="PHD">PHD</option>
-          </select>
-        </div>
-        <div>
-          <label>Academic Year</label>
-          <select
-            id="academicyear"
-            value={courseData.academicyear}
-            onChange={handleChange}
-            required
-          >
-            <option value="">---Select Academic Year---</option>
-            <option value="2023-2024">2023-2024</option>
-            <option value="2022-2023">2022-2023</option>
-            <option value="2021-2022">2021-2022</option>
-            <option value="2020-2021">2020-2021</option>
-          </select>
-        </div>
-        <div>
-          <label>Year</label>
-          <input
-            type="text"
-            id="year"
-            value={courseData.year}
-            onChange={handleChange}
-            placeholder="Enter Year"
-            required
-          />
-        </div>
-        <div>
-          <label>Semester</label>
-          <select
-            id="semester"
-            value={courseData.semester}
-            onChange={handleChange}
-            required
-          >
-            <option value="">---Select Semester---</option>
-            <option value="odd">ODD</option>
-            <option value="even">EVEN</option>
-          </select>
-        </div>
-        <div>
-          <label>Course Code</label>
-          <input
-            type="text"
-            id="coursecode"
-            value={courseData.coursecode}
-            onChange={handleChange}
-            placeholder="Enter Your Course Code"
-            required
-          />
-        </div>
-        <div>
-          <label>Course name</label>
-          <input
-            type="text"
-            id="coursename"
-            value={courseData.coursename}
-            onChange={handleChange}
-            placeholder="Enter Your Course Name"
-            required
-          />
-        </div>
-        <button type="submit">Update</button>
-      </form>
+            Update
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

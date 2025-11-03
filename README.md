@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+**Project Name:** Student Learning Management System - Frontend (built with React.js, CSS, and Bootstrap)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This is the **Frontend** part of the Student Learning Management System (LMS), built using **React.js**. It supports role-based functionality for **Admin**, **Student**, and **Faculty** users. The frontend interacts with the backend API to manage students, courses, content, and assessments.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📁 Folder Structure (inside `src/`)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `src/admin/`
+Admin can perform full CRUD (Create,Retrieve, Update,Delete) operations:
+- Performed CRUD operations on Students, Faculty, and Courses
+- `FacultyWithCourse.jsx` for mapping faculty with courses
+- I also implemented functionality to retrieve user details (such as student or faculty) based on their ID.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `src/student/`
+Student features:
+- Login Page, Profile Pages
+- View and Register Courses
+- Submit Assignments
+- View Uploaded Assessments
+- View Course Content
 
-### `npm test`
+### `src/faculty/`
+Faculty features:
+- Login Page, Profile Pages
+- Upload Course Content
+- Upload Assessments
+- View Student Assignment Submissions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `src/main/`
+- Common components like navbar, routing, and shared layouts
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔐 Session Management (for Login)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Session-based authentication is used to store and validate logged-in users.
+- Once logged in, session information (e.g., user ID or token) is stored using **sessionStorage** or **localStorage**, and used to restrict unauthorized access.
+- Protected routes prevent accessing dashboards without login.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🧰 Tech Stack (Frontend)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React.js** for component-based UI
+- **React Router** for role-based navigation
+- **Tailwind CSS** / Bootstrap for styling
+- **Axios** for HTTP requests to backend APIs
+- **SessionStorage** for managing authentication sessions
+- **React Hooks / Context API** for state and logic sharing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🚀 How to Run Frontend Locally
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/pavankumar0816/demolms.git
+   cd demolms
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. **Install Dependencies** => npm install
+3. **Start the App** ==> npm start
+4. Open http://localhost:3000 in your browser.

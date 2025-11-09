@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { FaUser, FaLock } from "react-icons/fa";
+import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
+import lmslogo from "../main/images/lms logo.jpg";
 
 export default function AdminLogin({ onAdminLogin }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,7 +25,7 @@ export default function AdminLogin({ onAdminLogin }) {
         `${config.url}/checkadminlogin`,
         formData,
       );
-      if (response.data != null) {
+      if (response.data) {
         onAdminLogin();
         localStorage.setItem("admin", JSON.stringify(response.data));
         navigate("/adminhome");
@@ -30,46 +33,80 @@ export default function AdminLogin({ onAdminLogin }) {
         setMessage("Login Failed");
         setError("");
       }
-    } catch (error) {
+    } catch (err) {
       setMessage("");
-      setError(error.message);
+      setError(err.message);
     }
   };
 
   const styles = {
     page: {
+      display: "flex",
+      flexDirection: "row",
       minHeight: "100vh",
-      background: "#283046",
-      // background: "linear-gradient(135deg, #1e3c72, #2a5298)", // new gradient background
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontFamily: "Arial, sans-serif",
-      padding: "20px",
+      fontFamily: "'Roboto', sans-serif",
     },
-    container: {
+    left: {
+      flex: 1,
+      position: "relative",
+      background: `url(${lmslogo}) center/cover no-repeat`,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      gap: "40px",
-      flexWrap: "wrap",
+      color: "#ffffff",
+      flexDirection: "column",
+      padding: "40px",
+    },
+    leftOverlay: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.5)",
+      zIndex: 0,
+      borderRadius: "0 0 0 0",
+    },
+    tagline: {
+      fontSize: "2rem",
+      fontWeight: "700",
+      textAlign: "center",
+      textShadow: "1px 1px 10px rgba(0,0,0,0.7)",
+      zIndex: 1,
+    },
+    subtitle: {
+      marginTop: "20px",
+      fontSize: "1.1rem",
+      fontWeight: "400",
+      textAlign: "center",
+      textShadow: "1px 1px 8px rgba(0,0,0,0.5)",
+      zIndex: 1,
+    },
+    right: {
+      flex: 1,
+      background: "lightgray",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "60px 40px",
+      animation: "fadeIn 0.8s ease forwards",
     },
     box: {
-      background: "linear-gradient(135deg, #1e3c72, #2a5298)", // card background
-      padding: "80px 100px", // increased padding
-      borderRadius: "20px", // rounded corners
-      width: "100%", // let maxWidth control the size
-      maxWidth: "700px", // bigger card
-      boxShadow: "0 25px 60px rgba(0,0,0,0.6)", // deeper shadow
-      color: "#ffffff",
+      width: "100%",
+      maxWidth: "400px",
+      background: "#ffffff",
+      borderRadius: "20px",
+      padding: "50px 30px",
+      boxShadow: "0 15px 40px rgba(0,0,0,0.2)",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
-
     title: {
-      textAlign: "center",
-      fontSize: "32px", // bigger title
-      fontWeight: "bold",
-      marginBottom: "30px",
-      color: "#ffffff",
+      fontSize: "2rem",
+      fontWeight: "700",
+      marginBottom: "25px",
+      color: "#111827",
     },
     msg: {
       color: "#f87171",
@@ -83,24 +120,34 @@ export default function AdminLogin({ onAdminLogin }) {
     },
     inputBox: {
       position: "relative",
-      marginBottom: "35px",
+      width: "100%",
+      marginBottom: "20px",
     },
     input: {
-      width: "100%", // slightly bigger input
+      width: "100%",
       padding: "14px 45px",
-      border: "1px solid #4a5568",
-      backgroundColor: "#1f2937",
-      color: "#fff",
+      border: "1px solid #d1d5db",
       borderRadius: "10px",
       fontSize: "16px",
       outline: "none",
+      color: "#111827",
+      transition: "0.3s",
     },
     icon: {
       position: "absolute",
       top: "50%",
       left: "12px",
       transform: "translateY(-50%)",
-      color: "#9ca3af",
+      color: "#6b7280",
+      fontSize: "18px",
+    },
+    showIcon: {
+      position: "absolute",
+      top: "50%",
+      right: "12px",
+      transform: "translateY(-50%)",
+      cursor: "pointer",
+      color: "#6b7280",
       fontSize: "18px",
     },
     rememberForgot: {
@@ -108,35 +155,51 @@ export default function AdminLogin({ onAdminLogin }) {
       justifyContent: "space-between",
       fontSize: "14px",
       marginBottom: "25px",
-      color: "#e2e8f0",
+      width: "100%",
+      color: "#6b7280",
     },
     forgotLink: {
-      color: "#63b3ed",
+      color: "#3b82f6",
       textDecoration: "none",
     },
     btn: {
       width: "100%",
-      background: "white",
-      color: "black",
-      border: "none",
-      padding: "14px",
+      padding: "15px",
       borderRadius: "10px",
-      fontSize: "18px", // slightly bigger button text
+      fontSize: "18px",
+      fontWeight: "600",
+      border: "none",
       cursor: "pointer",
-      transition: "background 0.3s ease, transform 0.2s",
+      background: "linear-gradient(to right, #3b82f6, #2563eb)",
+      color: "#ffffff",
+      transition: "0.3s, transform 0.2s",
     },
   };
 
   return (
     <div style={styles.page}>
-      <div style={styles.container}>
+      {/* Left illustration */}
+      <div style={styles.left}>
+        <div style={styles.leftOverlay}></div>
+        <div style={styles.tagline}>
+          <a href="/" style={{ color: "inherit", textDecoration: "none" }}>
+            Welcome to Student LMS
+          </a>
+        </div>
+        <div style={styles.subtitle}>
+          Empowering students and faculty with seamless online learning
+        </div>
+      </div>
+
+      {/* Right login form */}
+      <div style={styles.right}>
         <div style={styles.box}>
           <h1 style={styles.title}>Admin Login</h1>
 
           {message && <p style={styles.msg}>{message}</p>}
           {error && <p style={styles.error}>{error}</p>}
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
             <div style={styles.inputBox}>
               <FaUser style={styles.icon} />
               <input
@@ -154,13 +217,19 @@ export default function AdminLogin({ onAdminLogin }) {
               <FaLock style={styles.icon} />
               <input
                 style={styles.input}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter Password"
                 value={formData.password}
                 onChange={handleChange}
                 required
               />
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                style={styles.showIcon}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
 
             <div style={styles.rememberForgot}>
@@ -176,8 +245,14 @@ export default function AdminLogin({ onAdminLogin }) {
             <button
               type="submit"
               style={styles.btn}
-              onMouseOver={(e) => (e.target.style.background = "#2b6cb0")}
-              onMouseOut={(e) => (e.target.style.background = "#3182ce")}
+              onMouseOver={(e) => {
+                e.target.style.transform = "scale(1.05)";
+                e.target.style.boxShadow = "0 8px 20px rgba(0,0,0,0.2)";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.transform = "none";
+                e.target.style.boxShadow = "none";
+              }}
             >
               Login
             </button>

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { FaUser, FaLock } from "react-icons/fa";
+import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
+import lmslogo from "../main/images/lms logo.jpg";
 
 export default function FacultyLogin({ onFacultyLogin }) {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export default function FacultyLogin({ onFacultyLogin }) {
   });
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ export default function FacultyLogin({ onFacultyLogin }) {
         `${config.url}/checkfacultylogin`,
         formData,
       );
-      if (response.data != null) {
+      if (response.data) {
         onFacultyLogin();
         localStorage.setItem("faculty", JSON.stringify(response.data));
         navigate("/facultyhome");
@@ -34,37 +36,80 @@ export default function FacultyLogin({ onFacultyLogin }) {
         setMessage("Login Failed");
         setError("");
       }
-    } catch (error) {
+    } catch (err) {
       setMessage("");
-      setError(error.message);
+      setError(err.message);
     }
   };
 
   const styles = {
     page: {
+      display: "flex",
       minHeight: "100vh",
-      background: "#1a1a2e",
+      fontFamily: "'Roboto', sans-serif",
+    },
+    left: {
+      flex: 1,
+      position: "relative", // important for overlay
+      background: `url(${lmslogo}) center/cover no-repeat`,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      fontFamily: "Arial, sans-serif",
-      padding: "20px",
+      color: "#ffffff",
+      flexDirection: "column",
+      padding: "40px",
+    },
+    leftOverlay: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.5)",
+      zIndex: 1, // lower than text
+      borderRadius: "0",
+    },
+    tagline: {
+      fontSize: "2rem",
+      fontWeight: "700",
+      textAlign: "center",
+      textShadow: "1px 1px 10px rgba(0,0,0,0.7)",
+      zIndex: 2, // above overlay
+      position: "relative",
+    },
+    subtitle: {
+      marginTop: "20px",
+      fontSize: "1.1rem",
+      fontWeight: "400",
+      textAlign: "center",
+      textShadow: "1px 1px 8px rgba(0,0,0,0.5)",
+      zIndex: 2,
+      position: "relative",
+    },
+    right: {
+      flex: 1,
+      background: "lightgray", // corrected
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "60px 40px",
     },
     box: {
-      background: "linear-gradient(135deg, #6a11cb, #2575fc)", // purple-blue gradient
-      padding: "40px 30px",
-      borderRadius: "15px",
       width: "100%",
       maxWidth: "400px",
-      boxShadow: "0 15px 35px rgba(0,0,0,0.6)",
-      color: "#ffffff",
+      background: "#ffffff",
+      borderRadius: "20px",
+      padding: "50px 30px",
+      boxShadow: "0 15px 40px rgba(0,0,0,0.2)",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
     title: {
-      textAlign: "center",
-      fontSize: "26px",
-      fontWeight: "bold",
-      marginBottom: "20px",
-      color: "#ffffff",
+      fontSize: "2rem",
+      fontWeight: "700",
+      marginBottom: "25px",
+      color: "#111827",
     },
     msg: {
       color: "#f87171",
@@ -78,104 +123,133 @@ export default function FacultyLogin({ onFacultyLogin }) {
     },
     inputBox: {
       position: "relative",
-      marginBottom: "25px",
+      width: "100%",
+      marginBottom: "20px",
     },
     input: {
-      width: "80%",
-      padding: "10px 35px",
-      border: "1px solid #4a5568",
-      backgroundColor: "#1f2937",
-      color: "#fff",
-      borderRadius: "8px",
-      fontSize: "14px",
+      width: "100%",
+      padding: "14px 45px",
+      border: "1px solid #d1d5db",
+      borderRadius: "10px",
+      fontSize: "16px",
       outline: "none",
+      color: "#111827",
+      transition: "0.3s",
     },
     icon: {
       position: "absolute",
       top: "50%",
-      left: "10px",
+      left: "12px",
       transform: "translateY(-50%)",
-      color: "#9ca3af",
-      fontSize: "16px",
+      color: "#6b7280",
+      fontSize: "18px",
+    },
+    showIcon: {
+      position: "absolute",
+      top: "50%",
+      right: "12px",
+      transform: "translateY(-50%)",
+      cursor: "pointer",
+      color: "#6b7280",
+      fontSize: "18px",
     },
     rememberForgot: {
       display: "flex",
       justifyContent: "space-between",
-      fontSize: "12px",
-      marginBottom: "20px",
-      color: "#e2e8f0",
+      fontSize: "14px",
+      marginBottom: "25px",
+      width: "100%",
+      color: "#6b7280",
     },
     forgotLink: {
-      color: "#63b3ed",
+      color: "#3b82f6",
       textDecoration: "none",
     },
     btn: {
       width: "100%",
-      background: "white",
-      color: "black",
+      padding: "15px",
+      borderRadius: "10px",
+      fontSize: "18px",
+      fontWeight: "600",
       border: "none",
-      padding: "12px",
-      borderRadius: "8px",
-      fontSize: "16px",
       cursor: "pointer",
-      transition: "background 0.3s ease, transform 0.2s",
+      background: "linear-gradient(to right, #3b82f6, #2563eb)",
+      color: "#ffffff",
+      transition: "0.3s",
     },
   };
 
   return (
     <div style={styles.page}>
-      <div style={styles.box}>
-        <h1 style={styles.title}>Faculty Login</h1>
+      {/* Left illustration */}
+      <div style={styles.left}>
+        <div style={styles.leftOverlay}></div>
+        <div style={styles.tagline}>
+          <a href="/" style={{ color: "inherit", textDecoration: "none" }}>
+            Welcome to Student LMS
+          </a>
+        </div>
+        <div style={styles.subtitle}>
+          Empowering faculty and students with seamless online learning
+        </div>
+      </div>
 
-        {message && <p style={styles.msg}>{message}</p>}
-        {error && <p style={styles.error}>{error}</p>}
+      {/* Right login form */}
+      <div style={styles.right}>
+        <div style={styles.box}>
+          <h1 style={styles.title}>Faculty Login</h1>
 
-        <form onSubmit={handleSubmit}>
-          <div style={styles.inputBox}>
-            <input
-              type="number"
-              id="facultyid"
-              placeholder="Enter ID"
-              value={formData.facultyid}
-              onChange={handleChange}
-              style={styles.input}
-              required
-            />
-            <FaUser style={styles.icon} />
-          </div>
+          {message && <p style={styles.msg}>{message}</p>}
+          {error && <p style={styles.error}>{error}</p>}
 
-          <div style={styles.inputBox}>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter Password"
-              value={formData.password}
-              onChange={handleChange}
-              style={styles.input}
-              required
-            />
-            <FaLock style={styles.icon} />
-          </div>
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            <div style={styles.inputBox}>
+              <FaUser style={styles.icon} />
+              <input
+                style={styles.input}
+                type="number"
+                id="facultyid"
+                placeholder="Enter Faculty ID"
+                value={formData.facultyid}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div style={styles.rememberForgot}>
-            <label>
-              <input type="checkbox" style={{ marginRight: "5px" }} />
-              Remember Me
-            </label>
-            <a href="/forgot-password" style={styles.forgotLink}>
-              Forgot Password?
-            </a>
-          </div>
+            <div style={styles.inputBox}>
+              <FaLock style={styles.icon} />
+              <input
+                style={styles.input}
+                type={showPassword ? "text" : "password"}
+                id="password"
+                placeholder="Enter Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                style={styles.showIcon}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
+            </div>
 
-          <button
-            type="submit"
-            style={styles.btn}
-            onMouseOver={(e) => (e.target.style.background = "#d1d5db")}
-            onMouseOut={(e) => (e.target.style.background = "white")}
-          >
-            Login
-          </button>
-        </form>
+            <div style={styles.rememberForgot}>
+              <label>
+                <input type="checkbox" style={{ marginRight: "5px" }} />{" "}
+                Remember Me
+              </label>
+              <a href="/forgot-password" style={styles.forgotLink}>
+                Forgot Password?
+              </a>
+            </div>
+
+            <button type="submit" style={styles.btn}>
+              Login
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

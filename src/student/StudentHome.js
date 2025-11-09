@@ -1,46 +1,87 @@
 import React, { useEffect, useState } from "react";
 
 export default function StudentHome() {
-  const [studentData, setStudentData] = useState("");
+  const [studentData, setStudentData] = useState(null);
 
   useEffect(() => {
     const storedStudentData = localStorage.getItem("student");
     if (storedStudentData) {
-      const parsedStudentData = JSON.parse(storedStudentData);
-      setStudentData(parsedStudentData);
+      setStudentData(JSON.parse(storedStudentData));
     }
   }, []);
 
-  const nameLabelStyle = {
-    display: "inline-block",
-    backgroundColor: "#3b82f6", // blue background
-    color: "#ffffff",
-    padding: "10px 20px",
-    borderRadius: "20px",
-    fontWeight: "600",
-    fontSize: "18px",
-    marginBottom: "20px",
+  const pageStyle = {
+    minHeight: "100vh",
+    background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    padding: "40px 20px",
+    fontFamily: "'Roboto', sans-serif",
   };
 
-  const containerStyle = {
-    padding: "30px",
+  const cardStyle = {
+    width: "100%",
+    maxWidth: "900px",
+    backgroundColor: "#ffffff",
+    borderRadius: "20px",
+    padding: "40px",
+    boxShadow: "0 15px 40px rgba(0,0,0,0.2)",
+  };
+
+  const welcomeStyle = {
+    display: "inline-block",
+    backgroundColor: "#3b82f6",
+    color: "#ffffff",
+    padding: "12px 25px",
+    borderRadius: "25px",
+    fontWeight: "700",
+    fontSize: "22px",
+    marginBottom: "30px",
+  };
+
+  const sectionTitleStyle = {
+    fontSize: "20px",
+    fontWeight: "600",
+    color: "#111827",
+    marginBottom: "15px",
+  };
+
+  const sectionStyle = {
     backgroundColor: "#f3f4f6",
-    minHeight: "80vh",
-    borderRadius: "12px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    padding: "20px",
+    borderRadius: "15px",
+    marginBottom: "20px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
   };
 
   return (
-    <div style={containerStyle}>
-      {studentData && (
-        <div>
-          <span style={nameLabelStyle}>Welcome, {studentData.studentname}</span>
-          <div style={{ marginTop: "20px" }}>
-            {/* You can place more student-related content here */}
-            <p>Here you can view your courses, assessments, and content.</p>
-          </div>
-        </div>
-      )}
+    <div style={pageStyle}>
+      <div style={cardStyle}>
+        {studentData && (
+          <>
+            <span style={welcomeStyle}>Welcome, {studentData.studentname}</span>
+
+            <div style={sectionStyle}>
+              <h2 style={sectionTitleStyle}>Your Courses</h2>
+              <p>You can view all your enrolled courses here.</p>
+            </div>
+
+            <div style={sectionStyle}>
+              <h2 style={sectionTitleStyle}>Assessments</h2>
+              <p>Check upcoming assessments, deadlines, and grades.</p>
+            </div>
+
+            <div style={sectionStyle}>
+              <h2 style={sectionTitleStyle}>Resources & Content</h2>
+              <p>
+                Access learning materials and other content provided by your
+                faculty.
+              </p>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }

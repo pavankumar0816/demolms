@@ -21,6 +21,7 @@ import DeleteFaculty from "./DeleteFaculty";
 import UpdateFaculty from "./UpdateFaculty";
 
 import FacultyWithCourse from "./FacultyWithCourse";
+import MapFacultyStudent from "./MapFacultyStudent";
 
 export default function AdminNavBar() {
   const navigate = useNavigate();
@@ -212,6 +213,14 @@ export default function AdminNavBar() {
           Faculty-Course Mapping
         </Link>
         <br />
+        <Link
+          to="/facultystudentmapping"
+          style={linkStyle}
+          onMouseOver={(e) => (e.target.style.backgroundColor = "#e5e7eb")}
+          onMouseOut={(e) => (e.target.style.backgroundColor = "transparent")}
+        >
+          Faculty-Student Mapping
+        </Link>
         <br />
         {/* Logout */}
         <button style={buttonStyle} onClick={handleLogout}>
@@ -241,6 +250,10 @@ export default function AdminNavBar() {
           <Route path="/updatefaculty" element={<UpdateFaculty />} />
 
           <Route path="/facultycoursemapping" element={<FacultyWithCourse />} />
+          <Route
+            path="/facultystudentmapping"
+            element={<MapFacultyStudent />}
+          />
         </Routes>
       </div>
     </div>

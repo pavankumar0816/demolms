@@ -8,6 +8,7 @@ import ConductAssessment from "./ConductAssessment";
 import ViewMappedCourses from "./ViewMappedCourses";
 import ViewStudentAssessment from "./ViewStudentAssessment";
 import FacultyProfile from "./FacultyProfile";
+import ViewMappedStudents from "./ViewMappedStudents";
 
 export default function FacultyNavBar() {
   const navigate = useNavigate();
@@ -155,6 +156,15 @@ export default function FacultyNavBar() {
         >
           View Mapped Courses
         </Link>
+        <br />
+        <Link
+          to="/viewmappedstudents"
+          style={linkStyle}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        >
+          View Mapped Students
+        </Link>
 
         <button
           style={logoutButtonStyle}
@@ -186,9 +196,16 @@ export default function FacultyNavBar() {
             element={<ViewStudentAssessment />}
             exact
           />
+
           <Route
             path="/viewmappedcourses"
             element={<ViewMappedCourses />}
+            exact
+          />
+
+          <Route
+            path="/viewmappedstudents"
+            element={<ViewMappedStudents />}
             exact
           />
         </Routes>

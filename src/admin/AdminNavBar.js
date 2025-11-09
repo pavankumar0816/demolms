@@ -68,8 +68,7 @@ export default function AdminNavBar() {
     transition: "background 0.2s",
   };
 
-  const linkHover = { backgroundColor: "#e5e7eb", borderRadius: "8px" };
-
+ 
   const dropdownContentStyle = {
     display: "flex",
     flexDirection: "column",

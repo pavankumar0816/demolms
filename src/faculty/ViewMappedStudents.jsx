@@ -6,6 +6,7 @@ const ViewMappedStudents = () => {
   const [mappedStudents, setMappedStudents] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
 
   const faculty = JSON.parse(localStorage.getItem("faculty"));

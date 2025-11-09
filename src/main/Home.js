@@ -3,6 +3,7 @@ import lmsbg from "./images/lmsbg.png"; // Hero image
 import { motion } from "framer-motion";
 
 export default function Home() {
+  // eslint-disable-next-line no-unused-vars
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
 

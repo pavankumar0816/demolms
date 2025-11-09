@@ -1,6 +1,6 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import lmslogo from "./images/lms logo.jpg";
+import { Routes, Route } from "react-router-dom";
+
 // import { BsToggle2On } from "react-icons/bs";
 // import { FaSearch } from "react-icons/fa";
 import Home from "./Home";
